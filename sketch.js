@@ -4,15 +4,23 @@ import { jaPassouOIntervalo } from './temporizador.js';
 
 let captura;
 let palavras = [];
+let font;
+const dicionario = ["Guilherme", "Chocolate", "Doce de leite", "Chá"];
 
 function novaPalavra(posicao) {
-    return new Palavra("Guilherme", posicao);
+    const texto = random(dicionario);
+    return new Palavra(texto, posicao);
+}
+
+window.preload = function() {
+    font = loadFont("Dosis-Bold.ttf");
 }
 
 window.setup = function() {
     // console.log("rodando setup");
   createCanvas(400, 400);
   captura = new CapturaDeFaces();
+  textFont(font);
 }
 
 window.draw = function() {
