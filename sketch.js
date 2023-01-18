@@ -1,11 +1,13 @@
 import {CapturaDeFaces} from './alura-captura-de-faces.js';
 import { Palavra } from './palavras.js';
 import { jaPassouOIntervalo } from './temporizador.js';
+import { criaGiraGira } from './giraGira.js';
 
 let captura;
 let palavras = [];
 let font;
 const dicionario = ["Guilherme", "Chocolate", "Doce de leite", "Chá"];
+let giraGira;
 
 function novaPalavra(posicao) {
     const texto = random(dicionario);
@@ -21,9 +23,16 @@ window.setup = function() {
   createCanvas(400, 400);
   captura = new CapturaDeFaces();
   textFont(font);
+  giraGira = criaGiraGira();
 }
 
 window.draw = function() {
+    if(!captura.estaPronto()) {
+        return;
+    }
+
+    giraGira.remove();
+
     captura.desenha();
 
     const face = captura.face();

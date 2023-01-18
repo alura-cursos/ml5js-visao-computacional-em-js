@@ -6,6 +6,8 @@ export class Palavra {
         this.posicao = posicao;
         this.tamanho = height / 10;
         this.tamanhoInicial = this.tamanho;
+        const corAleatoria = random(["red", "white", "#6cd9ff"]);
+        this.cor = color(corAleatoria);
         console.log(`criando ${palavra}`);
     }
 
@@ -22,7 +24,7 @@ export class Palavra {
         this.posicao.x += diferenca.x * segundosPassados;
         this.posicao.y += diferenca.y * segundosPassados;
 
-        fill(color("#6cd9ff"));
+        fill(this.cor);
 
         textSize(this.tamanho);
 
