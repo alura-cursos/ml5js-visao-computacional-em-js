@@ -1,3 +1,4 @@
+import { movimentoEmFluxo } from "./movimento.js";
 
 export class Palavra {
     constructor(palavra, posicao) {
@@ -14,8 +15,12 @@ export class Palavra {
         const velocidadeDeEncolhimento = this.tamanhoInicial / 6;
         this.tamanho -= velocidadeDeEncolhimento * segundosPassados;
 
-        this.posicao.x += 50 * segundosPassados;
-        this.posicao.y += 50 * segundosPassados;
+        // this.posicao.x += 50 * segundosPassados;
+        // this.posicao.y += 50 * segundosPassados;
+
+        const diferenca = movimentoEmFluxo(this.posicao);
+        this.posicao.x += diferenca.x * segundosPassados;
+        this.posicao.y += diferenca.y * segundosPassados;
 
         fill(color("#6cd9ff"));
 
@@ -29,7 +34,9 @@ export class Palavra {
     }
 
     estaViva = function() {
-        return this.tamanho > 0;
+        return this.tamanho > 0 && this.posicao.x >=0 &&
+            this.posicao.y >= 0 && this.posicao.x < width &&
+            this.posicao.y < height;
     }
 
 }
