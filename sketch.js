@@ -39,7 +39,7 @@ window.draw = function() {
 
 
     for(const palavra of palavras) {
-        palavra.desenha();
+        palavra.atualiza();
     }
     palavras = palavras.filter(p => p.estaViva())
 
