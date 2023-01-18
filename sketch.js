@@ -41,6 +41,7 @@ window.draw = function() {
     for(const palavra of palavras) {
         palavra.desenha();
     }
+    palavras = palavras.filter(p => p.estaViva())
 
 
 }
